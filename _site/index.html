@@ -23,11 +23,211 @@
 
   <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
   <style>
+  :root {
+    --content-max-width: 1440px;
+    --color-green-dark: #005645;
+    --color-white: #ffffff;
+    --color-green-light: #a7d5bb;
+  }
+
+  .content-max-width {
+    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @font-face {
+    font-family: 'gothambold';
+    src: url('/fonts/gotham-bold-webfont.woff2') format('woff2'),
+        url('/fonts/gotham-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Cooper Black';
+    src: url('/fonts/cooper-black.woff2') format('woff2'),
+        url('/fonts/cooper-black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+  }
   /*! modern-normalize v3.0.1 | MIT License | https://github.com/sindresorhus/modern-normalize */
   *,::after,::before{box-sizing:border-box}html{font-family:system-ui,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji';line-height:1.15;-webkit-text-size-adjust:100%;tab-size:4}body{margin:0}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-color:currentcolor}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}legend{padding:0}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}
 
+  /* =========================
+    DISPLAY
+    ========================= */
+  .block { display: block; }
+  .inline { display: inline; }
+  .inline-block { display: inline-block; }
+  .flex { display: flex; }
+  .inline-flex { display: inline-flex; }
+  .grid { display: grid; }
+  .hidden { display: none; }
+
+  /* =========================
+    FLEXBOX
+    ========================= */
+
+  /* Direction */
+  .flex-row { flex-direction: row; }
+  .flex-col { flex-direction: column; }
+  .flex-row-reverse { flex-direction: row-reverse; }
+  .flex-col-reverse { flex-direction: column-reverse; }
+
+  /* Wrap */
+  .flex-wrap { flex-wrap: wrap; }
+  .flex-nowrap { flex-wrap: nowrap; }
+  .flex-wrap-reverse { flex-wrap: wrap-reverse; }
+
+  /* Justify */
+  .justify-start { justify-content: flex-start; }
+  .justify-center { justify-content: center; }
+  .justify-end { justify-content: flex-end; }
+  .justify-between { justify-content: space-between; }
+  .justify-around { justify-content: space-around; }
+  .justify-evenly { justify-content: space-evenly; }
+
+  /* Align items */
+  .items-start { align-items: flex-start; }
+  .items-center { align-items: center; }
+  .items-end { align-items: flex-end; }
+  .items-baseline { align-items: baseline; }
+  .items-stretch { align-items: stretch; }
+
+  /* Align content */
+  .content-start { align-content: flex-start; }
+  .content-center { align-content: center; }
+  .content-end { align-content: flex-end; }
+  .content-between { align-content: space-between; }
+  .content-around { align-content: space-around; }
+
+  /* Align self */
+  .self-auto { align-self: auto; }
+  .self-start { align-self: flex-start; }
+  .self-center { align-self: center; }
+  .self-end { align-self: flex-end; }
+  .self-stretch { align-self: stretch; }
+
+  /* Flex sizing */
+  .grow { flex-grow: 1; }
+  .no-grow { flex-grow: 0; }
+  .shrink { flex-shrink: 1; }
+  .no-shrink { flex-shrink: 0; }
+  .basis-auto { flex-basis: auto; }
+  .basis-0 { flex-basis: 0; }
+
+  /* =========================
+    GRID
+    ========================= */
+
+  /* Columns */
+  .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+  /* Auto layouts */
+  .grid-auto-cols { grid-auto-flow: column; }
+  .grid-auto-rows { grid-auto-flow: row; }
+
+  /* Span */
+  .col-span-1 { grid-column: span 1 / span 1; }
+  .col-span-2 { grid-column: span 2 / span 2; }
+  .col-span-3 { grid-column: span 3 / span 3; }
+  .col-span-4 { grid-column: span 4 / span 4; }
+  .col-span-full { grid-column: 1 / -1; }
+
+  /* Alignment */
+  .place-center { place-items: center; }
+  .place-start { place-items: start; }
+  .place-end { place-items: end; }
+
+  /* =========================
+    SPACING
+    ========================= */
+
+  .gap-0 { gap: 0; }
+  .gap-1 { gap: 0.25rem; }
+  .gap-2 { gap: 0.5rem; }
+  .gap-3 { gap: 1rem; }
+  .gap-4 { gap: 1.5rem; }
+  .gap-12 { gap: 3rem; }
+  .gap-20 { gap: 5rem; }
+
+  /* Padding */
+  .p-0 { padding: 0; }
+  .p-1 { padding: 0.25rem; }
+  .p-2 { padding: 0.5rem; }
+  .p-3 { padding: 1rem; }
+  .p-4 { padding: 1.5rem; }
+  .px-20 { padding-left: 5rem; padding-right: 5rem; }
+
+  .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+  .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+  .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+
+  /* Margin */
+  .m-0 { margin: 0; }
+  .m-1 { margin: 0.25rem; }
+  .m-2 { margin: 0.5rem; }
+  .m-3 { margin: 1rem; }
+
+  .mt-auto { margin-top: auto; }
+  .ml-auto { margin-left: auto; }
+  .mr-auto { margin-right: auto; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+
+  /* =========================
+    SIZING
+    ========================= */
+
+  .w-full { width: 100%; }
+  .h-full { height: 100%; }
+  .w-auto { width: 100%; }
+  .min-h-full { min-height: 100%; }
+
+  /* =========================
+    TEXT ALIGN
+    ========================= */
+
+  .text-left { text-align: left; }
+  .text-center { text-align: center; }
+  .text-right { text-align: right; }
+
+  /* =========================
+    POSITION
+    ========================= */
+
+  .relative { position: relative; }
+  .absolute { position: absolute; }
+  .fixed { position: fixed; }
+  .sticky { position: sticky; }
+
+  .top-0 { top: 0; }
+  .right-0 { right: 0; }
+  .bottom-0 { bottom: 0; }
+  .left-0 { left: 0; }
+
+
+  html,
   body {
-    padding: 1rem 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #a5d2b9;
+    color: #005645;
+    font-family: 'gothambold', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Cooper Black', sans-serif;
+    margin: 2em 0;
   }
   #mc_embed_signup {
     max-width: 500px;
@@ -36,33 +236,109 @@
   #mc_embed_signup h2 {
     margin: initial;
   }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  #mc_embed_signup .mc-field-group input {
+    background-color: var(--color-green-light);
+    color: var(--color-green-dark);
+    padding: 1.5rem 1.5rem;
+    clip-path: polygon(
+      0% 10%,
+      97% 0%,
+      100% 100%,
+      3% 94%
+    );
+  }
+  #mc_embed_signup .mc-field-group input::placeholder {
+    color: var(--color-green-dark);
+    opacity: 0.7;
+  }
+  #mc_embed_signup .button {
+    background-color: var(--color-green-light);
+    color: var(--color-green-dark);
+    padding: 1.5rem 1.5rem;
+    clip-path: polygon(
+      0% 10%,
+      97% 0%,
+      100% 100%,
+      3% 94%
+    );
+    line-height: 0;
+  }
+  #mc_embed_signup .button:hover {
+    background-color: var(--color-white);
+    color: var(--color-green-dark);
+  }
   </style>
 </head>
 
 <body>
-
-  <h1>Ted and Greg's Pain Cream</h1>
-
-  <div id="mc_embed_shell">
-    <div id="mc_embed_signup">
-      <form action="https://tedsbrainscience.us15.list-manage.com/subscribe/post?u=6cc24d844e32d5cbc7dda7955&amp;id=14538d79ab&amp;f_id=00d198e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <div id="mc_embed_signup_scroll">
-          <h2>Subscribe</h2>
-          <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-          <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" autocomplete="email"></div>
-          <div class="mc-field-group"><label for="mce-FNAME">First Name </label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div>
-          <div class="mc-field-group"><label for="mce-LNAME">Last Name </label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value=""></div>
-          <div id="mce-responses" class="clear">
-            <div class="response" id="mce-error-response" style="display: none;"></div>
-            <div class="response" id="mce-success-response" style="display: none;"></div>
-          </div>
-          <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_6cc24d844e32d5cbc7dda7955_14538d79ab" tabindex="-1" value=""></div>
-          <div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe"></div>
-        </div>
-      </form>
-    </div>
-    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+  <div class="content-max-width px-20 text-right" style="padding-top:2rem; padding-bottom:2rem;">
+    <img src="/images/put-some-science-on-it.svg" style="width: auto; height: 7rem;" alt="Ted and Greg's Pain Cream Logo">
   </div>
+  <section class="flex flex-wrap items-end content-max-width gap-20 px-20">
+    <div class="grow basis-0 min-w-0" style="min-width:300px;">
+      <img src="/images/ted-and-gregs-pain-rub-logo.svg" class="mx-auto" style="display: block; width: 70%; height: auto; padding-top:1rem;padding-bottom:5rem;" alt="Ted and Greg's Pain Cream Logo">
+    </div>
+    <div class="grow basis-0 min-w-0" style="min-width:300px;line-height: 0;">
+      <img src="/images/ted-and-gregs-bench.png" style="width: 100%; height: auto;" alt="Ted and Greg's bench">
+    </div>
+  </section>
+
+  <section style="background-color:var(--color-green-dark); color:var(--color-white); padding:2rem 1rem 0 1rem; margin-bottom:3rem;">
+
+    <div class="content-max-width px-20">
+      <div class="text-center">
+        <h1>Two regular-sized neuroscientists.<br>
+          One huge discovery.</h1>
+        <h2>Be the first to know</h2>
+
+        <h3>Science-based relief has a smell. And it’s kind of minty. Our newsletter is aroma-free though.</h3>
+      </div>
+
+
+
+      <div id="mc_embed_shell">
+        <div id="mc_embed_signup" class="mx-auto">
+          <form action="https://tedsbrainscience.us15.list-manage.com/subscribe/post?u=6cc24d844e32d5cbc7dda7955&amp;id=14538d79ab&amp;f_id=00d198e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+            <div id="mc_embed_signup_scroll">
+              <h2 style="color: var(--color-green-light)">Subscribe</h2>
+              <div class="indicates-required sr-only"><span class="asterisk">*</span> indicates required</div>
+              <div class="mc-field-group"><label for="mce-EMAIL" class="sr-only">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" autocomplete="email" placeholder="Email Address*"></div>
+              <div class="mc-field-group"><label for="mce-FNAME" class="sr-only">First Name </label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value="" placeholder="First Name"></div>
+              <div class="mc-field-group"><label for="mce-LNAME" class="sr-only">Last Name </label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value="" placeholder="Last Name"></div>
+              <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display: none;"></div>
+                <div class="response" id="mce-success-response" style="display: none;"></div>
+              </div>
+              <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_6cc24d844e32d5cbc7dda7955_14538d79ab" tabindex="-1" value=""></div>
+              <div class="clear text-right"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe"></div>
+            </div>
+          </form>
+        </div>
+        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+      </div>
+    </div>
+      
+    <div class="content-max-width px-20 flex justify-between items-center" style="padding:2rem 1rem 0 1rem;">
+      <img src="/images/footer-science-left.svg" style="width: auto; height: 8rem;" alt="Ted and Greg's Pain Cream Bottles">
+      <div class="text-center">
+        <a href="" style="color:var(--color-green-light);font-family: 'Cooper Black', sans-serif; font-size:1.5rem">Are you a retailer who wants to stock Ted and Greg’s? Click here.</a>
+      </div>
+      <img src="/images/footer-science-right.svg" style="width: auto; height: 8rem;" alt="Ted and Greg's Pain Cream Bottles">
+    </div>
+  </section>
+
+
 
 
 </body>
